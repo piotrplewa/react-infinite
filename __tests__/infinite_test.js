@@ -65,6 +65,19 @@ describe('Rendering the React Infinite Component Wrapper', function() {
     expect(infinite).toMatchSnapshot();
   });
 
+  it('customizes children rendering', function() {
+    var infinite = TestUtils.renderIntoDocument(
+        <Infinite elementHeight={200}
+                  containerHeight={800}
+                  childrenRenderer={(children) => (<table className="custom-container">{children}</table>)}>
+          <div/>
+          <div/>
+        </Infinite>
+      );
+
+    expect(TestUtils.findRenderedDOMComponentWithClass(infinite, 'custom-container')).not.toBeUndefined();
+  });
+
   it('allows preloadBatchSize to be zero', function() {
     const rootNode = mount(
       <Infinite

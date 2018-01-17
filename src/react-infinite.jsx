@@ -57,14 +57,9 @@ class Infinite extends React.Component<
     ]).isRequired,
     // This is the total height of the visible window. One
     // of
-<<<<<<< HEAD
     containerHeight: PropTypes.number,
     useWindowAsScrollContainer: PropTypes.bool,
-=======
-    containerHeight: React.PropTypes.number,
-    useWindowAsScrollContainer: React.PropTypes.bool,
-    childrenRenderer: React.PropTypes.func,
->>>>>>> zhang/master
+    childrenRenderer: PropTypes.func,
 
     displayBottomUpwards: PropTypes.bool.isRequired,
 
@@ -489,7 +484,9 @@ class Infinite extends React.Component<
             style={infiniteHelpers.buildHeightStyle(topSpacerHeight)}
           />
           {this.computedProps.displayBottomUpwards && loadingSpinner}
-            {this.computedProps.childrenRenderer ? this.computedProps.childrenRenderer(displayables) : displayables}
+          {this.computedProps.childrenRenderer
+            ? this.computedProps.childrenRenderer(displayables)
+            : displayables}
           {!this.computedProps.displayBottomUpwards && loadingSpinner}
           <div
             ref={c => {
